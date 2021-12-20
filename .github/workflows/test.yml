@@ -69,7 +69,9 @@ jobs:
 
       - name: Install feeds
         working-directory: openwrt
-        run: ./scripts/feeds install -a
+        run: |
+          ./scripts/feeds install -a
+          ./scripts/feeds install -a
 
       - name: Load custom configuration
         run: |
