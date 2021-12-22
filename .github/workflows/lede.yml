@@ -16,7 +16,7 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: 0 0 * * 1
+    - cron: 0 0 * * *
 
 env:
   REPO_URL: https://github.com/ZMuSiShui/lede
@@ -154,7 +154,7 @@ jobs:
         id: tag
         if: env.UPLOAD_RELEASE == 'true' && !cancelled()
         run: |
-          echo "::set-output name=release_tag::Test-$(date "+%Y.%m.%d")"
+          echo "::set-output name=release_tag::Lede-$(date "+%Y.%m.%d")"
           touch release.txt
           [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
           [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
